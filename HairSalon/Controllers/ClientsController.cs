@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace HairSalon.Controllers
 {
-  public class ClientsController : Controllers
+  public class ClientsController : Controller
   {
     private readonly HairSalonContext _db;
 
@@ -53,7 +53,7 @@ namespace HairSalon.Controllers
     {
       _db.Entry(client).State = EntityState.Modified;
       _db.SaveChanges();
-      return View(thisClient);
+      return RedirectToAction("Index");
     }
 
     public ActionResult Delete(int id)

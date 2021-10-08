@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace HairSalon.Controllers
 {
-  public class StylistsController : Controllers
+  public class StylistsController : Controller
   {
     private readonly HairSalonContext _db;
 
@@ -49,7 +49,7 @@ namespace HairSalon.Controllers
     [HttpPost]
     public ActionResult Edit(Stylist stylist)
     {
-      _db.Entry(stylist).State = EntityStat.Modified;
+      _db.Entry(stylist).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
