@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+}
+
+@using HairSalon.Models;
+
+<div class="jumbotron">
+  <h3>Client Search</h3>
+</div>
+
+@if (Model.Count == 0)
+{
+  <p>No clients found.</p>
+}
+else
+{
+  <p>Results:</p>
+  <ul>
+    @foreach (Client client in Model)
+    {
+      <li>@Html.ActionLink($"{client.Name}", "Details", new {id = client.ClientId})</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Client List", "Index")<br>
+  @Html.ActionLink("Stylist List", "Index", "Stylists")<br>
+  @Html.ActionLink("Home", "Index", "Home")</p>
