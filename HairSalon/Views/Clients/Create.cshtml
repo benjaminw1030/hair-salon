@@ -8,15 +8,22 @@
   <h3>New Client</h3>
 </div>
 
-@using (Html.BeginForm())
+@if (ViewBag.StylistList.Count == 0)
 {
-  @Html.LabelFor(model => Model.Name)
-  @Html.TextBoxFor(model => Model.Name)
-  @Html.LabelFor(model => model.Stylist)
-  @Html.DropDownList("StylistId")
+  <p>There are no stylists in the system. Please @Html.ActionLink("add", "Create", "Stylists") some before creating new clients.</p>
+}
+else
+{
+  @using (Html.BeginForm())
+  {
+    @Html.LabelFor(model => Model.Name)
+    @Html.TextBoxFor(model => Model.Name)
+    @Html.LabelFor(model => model.Stylist)
+    @Html.DropDownList("StylistId")
 
-  <input type="submit" value="Add Client"/>
+    <input type="submit" value="Add Client" />
+  }
 }
 
 <p>@Html.ActionLink("Client List", "Index")<br>
-@Html.ActionLink("Home", "Index", "Home")</p>
+  @Html.ActionLink("Home", "Index", "Home")</p>
