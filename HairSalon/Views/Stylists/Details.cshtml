@@ -3,6 +3,7 @@
 }
 
 @model HairSalon.Models.Stylist
+@using HairSalon.Models
 
 <div class="jumbotron">
   <h3>Details for @Model.Name</h3>
@@ -11,7 +12,23 @@
 <p>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</p>
 <p>@Html.DisplayNameFor(model => model.Specialty): @Html.DisplayFor(model => model.Specialty)</p>
 
+@if (ViewBag.ClientList.Count == 0)
+{
+  <p>@Model.Name has no clients assigned.</p>
+}
+else
+{
+  <p>Assigned clients:</p>
+  <ul>
+    @foreach (Client client in ViewBag.ClientList)
+    {
+      <li>@Html.ActionLink($"{client.Name}", "Details", "Clients", new {id = client.ClientId})</li>
+    }
+  </ul>
+}
+
+
 @Html.ActionLink("Edit Stylist", "Edit", new { id = Model.StylistId })<br>
 @Html.ActionLink("Delete Stylist", "Delete", new { id = Model.StylistId })<br>
-@Html.ActionLink("Stylist list", "Index")<br>
+@Html.ActionLink("Stylist List", "Index")<br>
 @Html.ActionLink("Home", "Index", "Home")</p>
