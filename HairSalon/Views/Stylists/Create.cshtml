@@ -10,12 +10,16 @@
 
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => Model.Name)
-  @Html.TextBoxFor(model => Model.Name)
-  @Html.LabelFor(model => Model.Specialty)
-  @Html.TextBoxFor(model => Model.Specialty)
+  <div class="row align-items-center">
+    <div class="col-md-12 mb-3">
+      @Html.TextBoxFor(model => Model.Name, new {@class = "form-control", @placeholder = "Name"})
+    </div>
+    <div class="col-md-12 mb-3">
+      @Html.TextBoxFor(model => Model.Specialty, new {@class = "form-control", @placeholder = "Specialty"})
+    </div>
+  </div>
 
-  <input type="submit" value="Add Stylist"/>
+  <input type="submit" value="Add Stylist" class="btn-dark"/>
 }
 
 <p>@Html.ActionLink("Stylist list", "Index")<br>

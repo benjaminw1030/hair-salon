@@ -8,11 +8,11 @@
   <h3>Deleting @Model.Name</h3>
 </div>
 
-<p>Are you sure you want to delete this stylist?</p>
 
 @using (Html.BeginForm())
 {
-  <input type="submit" value="Delete"/>
+  <p>Are you sure you want to delete this stylist?</p>
+  <input type="submit" value="Delete" class="btn-dark"/>
 }
 
 <p>@Html.ActionLink("Back to Stylist", "Details", new { id = Model.StylistId })<br>

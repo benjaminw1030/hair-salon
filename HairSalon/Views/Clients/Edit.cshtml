@@ -10,15 +10,21 @@
 
 @using (Html.BeginForm())
 {
-  @Html.HiddenFor(model => Model.ClientId)
-  @Html.LabelFor(model => Model.Name)
-  @Html.EditorFor(model => Model.Name)
-  @Html.LabelFor(model => model.Stylist)
-  @Html.DropDownList("StylistId")
+  <div class="row align-items-center">
+      @Html.HiddenFor(model => Model.ClientId)
+    <div class="col-md-12 mb-3">
+      @Html.LabelFor(model => Model.Name)
+      @Html.EditorFor(model => Model.Name)
+    </div>
+    <div class="col-md-12 mb-3">
+      @Html.LabelFor(model => model.Stylist)
+      @Html.DropDownList("StylistId")
+    </div>
+  </div>
 
-  <input type="submit" value="Save"/>
+  <input type="submit" value="Save" class="btn btn-dark"/>
 }
 
 <p>@Html.ActionLink("Back to Client", "Details", new { id = Model.ClientId })<br>
-@Html.ActionLink("Client List", "Index")<br>
-@Html.ActionLink("Home", "Index", "Home")</p>
+  @Html.ActionLink("Client List", "Index")<br>
+  @Html.ActionLink("Home", "Index", "Home")</p>
